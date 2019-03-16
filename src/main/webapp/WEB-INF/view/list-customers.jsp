@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>List Customers</title>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" />
 </head>
 <body>
 
@@ -13,12 +14,11 @@
 </div>
 
 <div id="container">
+    <h2>${pageContext.request.contextPath}</h2>
     <div id="content">
         <table>
             <tr>
-                <th>First name</th>
-                <th>Last Name</th>
-                <th>Email</th>
+                <th>First name</th><th>Last Name</th><th>Email</th>
             </tr>
             <c:forEach var="tempCustomer" items="${customers}">
                 <tr>
