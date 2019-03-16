@@ -14,7 +14,7 @@
 </div>
 
 <div id="container">
-    <h2>${pageContext.request.contextPath}</h2>
+    <input type="button" value="Add Customer" onclick="window.location.href='showFormForAdd'; return false" />
     <div id="content">
         <table>
             <tr>
