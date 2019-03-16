@@ -6,10 +6,7 @@ import entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import service.CustomerService;
 
 import java.util.List;
@@ -47,4 +44,18 @@ public class CustomerController {
 
         return "redirect:/customer/list";
     }
+
+    @GetMapping("/showFormForUpdate")
+    public String showFormForUpdate(@RequestParam("customerId") int customerId, Model theModel){
+        Customer theCustomer = customerService.getCustomer(customerId);
+        theModel.addAttribute("customer",theCustomer);
+        return "customer-form";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("customerId") int id){
+        customerService.deleteCustomer(id);
+        return "redirect:/customer/list";
+    }
+
 }

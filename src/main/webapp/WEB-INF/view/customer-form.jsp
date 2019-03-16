@@ -15,6 +15,7 @@
         <h3>Save customer</h3>
 
         <form:form action="saveCustomer" modelAttribute="customer" method="post" >
+            <form:hidden path="id" />
             <table>
                 <tr><th>First name: </th><td><form:input path="firstName" /></td></tr>
                 <tr><th>Last name: </th><td><form:input path="lastName"/></td></tr>
