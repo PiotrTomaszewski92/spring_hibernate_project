@@ -1,6 +1,7 @@
 package aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -31,8 +32,20 @@ public class CRMLoggingAspect {
     @Before("forAppFlow()")
     public void before(JoinPoint joinPoint){
             String theMethod = joinPoint.getSignature().toShortString();
-        myLogger.info("====>>> in @Before calling method: "+theMethod);
+            myLogger.info("====>>> in @Before calling method: "+theMethod);
+
+            Object[] args = joinPoint.getArgs();
+            for (Object arg : args){
+                myLogger.info("====>>> Argument: "+arg);
+            }
     }
 
     //add @AfterReturning advice
+    @AfterReturning(pointcut = "forAppFlow()", returning = "result")
+    public void afterReturning(JoinPoint joinPoint, Object result){
+           String method = joinPoint.getSignature().toShortString();
+            myLogger.info("~~~~>>> in @AfterReturning calling method: "+method);
+
+            myLogger.info("~~~~>>> result: "+result);
+    }
 }
