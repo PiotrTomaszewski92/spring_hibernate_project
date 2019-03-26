@@ -31,7 +31,7 @@ public class CRMLoggingAspect {
     @Before("forAppFlow()")
     public void before(JoinPoint joinPoint){
             String theMethod = joinPoint.getSignature().toShortString();
-        System.out.println("====>>> in @Before calling method: "+theMethod);
+        myLogger.info("====>>> in @Before calling method: "+theMethod);
     }
 
     //add @AfterReturning advice
